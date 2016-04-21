@@ -1,0 +1,17 @@
+saltstack:
+  name: 'SaltStack master'
+  description: 'Install SaltStack'
+  has_primary: false
+  public_ip_required: false
+  weight: 100
+  limits:
+    max: 1
+  conflicts:
+    - controller
+  # 'update_required' is needed to make sure that the already deployed nodes
+  # are updated in the same run as the new nodes. The 'reexecute_on' stanza
+  # doesn't guarantee this since the reexecuted tasks are run after the new
+  # nodes are deployed.
+  update_required:
+    - saltstack
+
