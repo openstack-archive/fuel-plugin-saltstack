@@ -1,0 +1,13 @@
+[]
+#- id: "saltstack"
+#  default_mapping: "management"
+#  properties:
+#    subnet: true
+#    gateway: false
+#    vip:
+#       - name: "saltstack"
+#         namespace: "haproxy"
+#         alias: "saltstack"
+#         node_roles:
+#           - saltstack
+#
