@@ -1,0 +1,65 @@
+- id: saltstack
+  type: group
+  role: [saltstack]
+  tasks: &common_tasks
+    - hiera
+    - setup_repositories
+    - fuel_pkgs
+    - globals
+    - tools
+    - logging
+    - netconfig
+    - hosts
+  required_for: [deploy_end]
+  requires: [deploy_start]
+  parameters:
+    strategy:
+      type: one_by_one
+
+- id: saltstack-firewall
+  type: puppet
+  groups: [saltstack]
+  requires: [netconfig]
+  required_for: [deploy_end]
+  parameters:
+    puppet_manifest: puppet/manifests/firewall.pp
+    puppet_modules: /etc/puppet/modules:puppet/modules
+    timeout: 600
+#  reexecute_on:
+#    - deploy_changes
+
+- id: saltstack-master-bootstrap
+  type: puppet
+  groups: [saltstack]
+  requires: [saltstack-firewall]
+  required_for: [deploy_end]
+  parameters:
+    puppet_manifest: puppet/manifests/master.pp
+    puppet_modules: puppet/modules
+    timeout: 600
+#  reexecute_on:
+#    - deploy_changes
+
+- id: saltstack-minion-bootstrap
+  type: puppet
+  role: '*'
+  requires: [post_deployment_start]
+  required_for: [post_deployment_end]
+  parameters:
+    puppet_manifest: puppet/manifests/minion.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 600
+  reexecute_on:
+    - deploy_changes
+
+- id: saltstack-accept-minions
+  type: puppet
+  role: [saltstack]
+  requires: [saltstack-minion-bootstrap]
+  required_for: [post_deployment_end]
+  parameters:
+    puppet_manifest: puppet/manifests/accept_minions.pp
+    puppet_modules: puppet/modules
+    timeout: 600
+  reexecute_on:
+    - deploy_changes

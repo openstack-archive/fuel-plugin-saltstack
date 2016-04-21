@@ -1,0 +1,28 @@
+#!/bin/bash
+set -eux
+
+. "$(dirname "$(readlink -f "$0")")"/functions.sh
+
+#FIREWALL_TARBALL_URL="https://forgeapi.puppetlabs.com/v3/files/puppetlabs-firewall-1.7.2.tar.gz"
+#STDLIB_TARBALL_URL="https://forgeapi.puppetlabs.com/v3/files/puppetlabs-stdlib-4.7.0.tar.gz"
+#download_puppet_module "firewall" "$FIREWALL_TARBALL_URL"
+#download_puppet_module "stdlib" "$STDLIB_TARBALL_URL"
+
+download_package http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/p/python-tornado/python-tornado_4.2.1-1_amd64.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/s/salt/salt-common_2015.8.8+ds-2_all.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/s/salt/salt-minion_2015.8.8+ds-2_all.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/salt-api_2015.8.8+ds-2_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/main/d/dctrl-tools/dctrl-tools_2.23ubuntu1_amd64.deb \
+     http://archive.ubuntu.com/ubuntu/pool/main/p/python-apt/python-apt_0.9.3.5ubuntu2_amd64.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/s/salt/salt-master_2015.8.8+ds-2_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/main/libe/liberror-perl/liberror-perl_0.17-1.1_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/main/g/git/git-man_1.9.1-1ubuntu0.3_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/universe/p/python-async/python-async_0.6.1-1_amd64.deb \
+     http://archive.ubuntu.com/ubuntu/pool/universe/p/python-smmap/python-smmap_0.8.2-1_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/universe/p/python-gitdb/python-gitdb_0.5.4-1_amd64.deb \
+     http://archive.ubuntu.com/ubuntu/pool/universe/p/python-git/python-git_0.3.2~RC1-3_all.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/s/salt/salt-ssh_2015.8.8+ds-2_all.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/s/salt/salt-syndic_2015.8.8+ds-2_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/main/g/git/git_1.9.1-1ubuntu0.3_amd64.deb \
+     http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/pool/main/libc/libcloud/python-libcloud_0.15.1-1~ubuntu14.04.1_all.deb \
+     http://archive.ubuntu.com/ubuntu/pool/main/p/python-lockfile/python-lockfile_0.8-2ubuntu2_all.deb
