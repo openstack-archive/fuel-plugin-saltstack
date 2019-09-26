@@ -1,7 +1,0 @@
-attributes:
-  acccept_minion:
-    label: 'Accept all minions by default'
-    value: false
-    description: 'Accept all minions inconditionnaly by running the command "salt-key -y -A"'
-    weight: 25
-    type: "checkbox"

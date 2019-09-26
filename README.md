@@ -1,13 +1,3 @@
-Saltstack Fuel Plugin
-=====================
+# This repo has moved to OpenDev
 
-The Plugin deploy and configure SaltStack [#]_:
-
-* salt-minion run on all nodes
-* salt-master and salt-api run on a dedicated node (role saltstack)
-
-
-*note*: This Fuel plugin is EXPERIMENTAL
-
-.. [#] http://saltstack.com
-
+It can now be found at [https://opendev.org/x/fuel-plugin-saltstack](https://opendev.org/x/fuel-plugin-saltstack)
